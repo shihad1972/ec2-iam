@@ -1,4 +1,4 @@
-EC2-IAM
+ec2-iam-role
 =========
 
 Create AWS EC2 IAM roles to utilise the IAM permissions system in AWS
