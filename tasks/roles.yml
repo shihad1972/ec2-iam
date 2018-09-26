@@ -1,0 +1,14 @@
+---
+
+- name: Create IAM roles
+  iam_role:
+    name: "{{ item.name }}-Role"
+    state: "{{ item.state | default ('present') }}"
+    assume_role_policy_document: "{{ lookup('template', template_dir + item.role) }}"
+    managed_policy: "{{ item.managed }}"
+    path: "{{ item.path | default ('/') }}"
+  with_items: "{{ iam_templates }}"
+  loop_control:
+    label: "{{ item.name }}"
+  register: _new_iam_roles
+  when: (iam_templates is defined and iam_templates | length > 0)

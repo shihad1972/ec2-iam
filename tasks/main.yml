@@ -1,0 +1,5 @@
+---
+# tasks file for ec2-iam-role
+
+- import_tasks: roles.yml
+- import_tasks: policies.yml
